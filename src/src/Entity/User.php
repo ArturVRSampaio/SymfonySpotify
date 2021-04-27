@@ -33,6 +33,16 @@ class User
      */
     private $plan;
 
+    /**
+     * @ORM\OneToOne(targetEntity=CreditCard::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $creditCard;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Address::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $address;
+
 
     public function getId(): ?int
     {
@@ -71,6 +81,50 @@ class User
     public function setPlan(?Plan $plan): self
     {
         $this->plan = $plan;
+
+        return $this;
+    }
+
+    public function getCreditCard(): ?CreditCard
+    {
+        return $this->creditCard;
+    }
+
+    public function setCreditCard(?CreditCard $creditCard): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($creditCard === null && $this->creditCard !== null) {
+            $this->creditCard->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($creditCard !== null && $creditCard->getUser() !== $this) {
+            $creditCard->setUser($this);
+        }
+
+        $this->creditCard = $creditCard;
+
+        return $this;
+    }
+
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?Address $address): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($address === null && $this->address !== null) {
+            $this->address->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($address !== null && $address->getUser() !== $this) {
+            $address->setUser($this);
+        }
+
+        $this->address = $address;
 
         return $this;
     }
