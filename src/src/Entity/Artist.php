@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\ArtistRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass=ArtistRepository::class)
  */
-class User
+class Artist
 {
     /**
      * @ORM\Id
@@ -25,14 +27,12 @@ class User
     /**
      * @ORM\Column(type="date")
      */
-    private $birthDate;
+    private $BirthDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Plan::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $plan;
-
+    public function __construct()
+    {
+        $this->albums = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,26 +53,13 @@ class User
 
     public function getBirthDate(): ?\DateTimeInterface
     {
-        return $this->birthDate;
+        return $this->BirthDate;
     }
 
-    public function setBirthDate(\DateTimeInterface $birthDate): self
+    public function setBirthDate(\DateTimeInterface $BirthDate): self
     {
-        $this->birthDate = $birthDate;
+        $this->BirthDate = $BirthDate;
 
         return $this;
     }
-
-    public function getPlan(): ?Plan
-    {
-        return $this->plan;
-    }
-
-    public function setPlan(?Plan $plan): self
-    {
-        $this->plan = $plan;
-
-        return $this;
-    }
-
 }
