@@ -15,8 +15,8 @@ class UserType extends AbstractType
             ->add('name')
             ->add('birthDate')
             ->add('plan')
-            ->add('creditCard')
-            ->add('address')
+            ->add('creditCard', CreditCardType::class)
+            ->add('address', AddressType::class)
         ;
     }
 

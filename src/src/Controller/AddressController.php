@@ -21,27 +21,6 @@ class AddressController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'address_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
-    {
-        $address = new Address();
-        $form = $this->createForm(AddressType::class, $address);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($address);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('address_index');
-        }
-
-        return $this->render('address/new.html.twig', [
-            'address' => $address,
-            'form' => $form->createView(),
-        ]);
-    }
-
     #[Route('/{id}', name: 'address_show', methods: ['GET'])]
     public function show(Address $address): Response
     {

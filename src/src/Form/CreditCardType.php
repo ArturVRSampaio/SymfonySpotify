@@ -13,7 +13,6 @@ class CreditCardType extends AbstractType
     {
         $builder
             ->add('number')
-            ->add('user')
         ;
     }
 

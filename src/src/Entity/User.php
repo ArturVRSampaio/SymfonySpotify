@@ -36,12 +36,12 @@ class User
     private $plan;
 
     /**
-     * @ORM\OneToOne(targetEntity=CreditCard::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=CreditCard::class, mappedBy="user", cascade={"ALL"})
      */
     private $creditCard;
 
     /**
-     * @ORM\OneToOne(targetEntity=Address::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Address::class, mappedBy="user", cascade={"ALL"})
      */
     private $address;
 

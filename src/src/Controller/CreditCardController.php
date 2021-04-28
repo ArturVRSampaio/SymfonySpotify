@@ -21,27 +21,6 @@ class CreditCardController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'credit_card_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
-    {
-        $creditCard = new CreditCard();
-        $form = $this->createForm(CreditCardType::class, $creditCard);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($creditCard);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('credit_card_index');
-        }
-
-        return $this->render('credit_card/new.html.twig', [
-            'credit_card' => $creditCard,
-            'form' => $form->createView(),
-        ]);
-    }
-
     #[Route('/{id}', name: 'credit_card_show', methods: ['GET'])]
     public function show(CreditCard $creditCard): Response
     {
