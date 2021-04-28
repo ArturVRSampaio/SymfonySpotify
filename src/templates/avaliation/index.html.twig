@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avaliation index{% endblock %}
+
+{% block body %}
+    <h1>Avaliation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avaliation in avaliations %}
+            <tr>
+                <td>{{ avaliation.id }}</td>
+                <td>
+                    <a href="{{ path('avaliation_show', {'id': avaliation.id}) }}">show</a>
+                    <a href="{{ path('avaliation_edit', {'id': avaliation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('avaliation_new') }}">Create new</a>
+{% endblock %}
