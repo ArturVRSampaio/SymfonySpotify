@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MusicRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +29,16 @@ class Music
      * @ORM\JoinColumn(nullable=false)
      */
     private $album;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Avaliation::class, mappedBy="music")
+     */
+    private $avaliations;
+
+    public function __construct()
+    {
+        $this->avaliations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,6 +65,36 @@ class Music
     public function setAlbum(?Album $album): self
     {
         $this->album = $album;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Avaliation[]
+     */
+    public function getAvaliations(): Collection
+    {
+        return $this->avaliations;
+    }
+
+    public function addAvaliation(Avaliation $avaliation): self
+    {
+        if (!$this->avaliations->contains($avaliation)) {
+            $this->avaliations[] = $avaliation;
+            $avaliation->setMusic($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvaliation(Avaliation $avaliation): self
+    {
+        if ($this->avaliations->removeElement($avaliation)) {
+            // set the owning side to null (unless already changed)
+            if ($avaliation->getMusic() === $this) {
+                $avaliation->setMusic(null);
+            }
+        }
 
         return $this;
     }

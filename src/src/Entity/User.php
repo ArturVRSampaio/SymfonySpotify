@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +45,15 @@ class User
      */
     private $address;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Avaliation::class, mappedBy="user")
+     */
+    private $avaliations;
+
+    public function __construct()
+    {
+        $this->avaliations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -125,6 +136,36 @@ class User
         }
 
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Avaliation[]
+     */
+    public function getAvailable(): Collection
+    {
+        return $this->available;
+    }
+
+    public function addAvailable(Avaliation $available): self
+    {
+        if (!$this->available->contains($available)) {
+            $this->available[] = $available;
+            $available->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvailable(Avaliation $available): self
+    {
+        if ($this->available->removeElement($available)) {
+            // set the owning side to null (unless already changed)
+            if ($available->getUser() === $this) {
+                $available->setUser(null);
+            }
+        }
 
         return $this;
     }
