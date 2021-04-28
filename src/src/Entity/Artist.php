@@ -29,6 +29,11 @@ class Artist
      */
     private $BirthDate;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Album::class, mappedBy="artists")
+     */
+    private $albums;
+
     public function __construct()
     {
         $this->albums = new ArrayCollection();
@@ -59,6 +64,33 @@ class Artist
     public function setBirthDate(\DateTimeInterface $BirthDate): self
     {
         $this->BirthDate = $BirthDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Album[]
+     */
+    public function getAlbums(): Collection
+    {
+        return $this->albums;
+    }
+
+    public function addAlbum(Album $album): self
+    {
+        if (!$this->albums->contains($album)) {
+            $this->albums[] = $album;
+            $album->addArtist($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlbum(Album $album): self
+    {
+        if ($this->albums->removeElement($album)) {
+            $album->removeArtist($this);
+        }
 
         return $this;
     }

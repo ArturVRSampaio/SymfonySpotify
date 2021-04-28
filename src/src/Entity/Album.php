@@ -29,9 +29,15 @@ class Album
      */
     private $musics;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Artist::class, inversedBy="albums")
+     */
+    private $artists;
+
     public function __construct()
     {
         $this->musics = new ArrayCollection();
+        $this->artists = new ArrayCollection();
     }
 
     public function __toString() {
@@ -81,6 +87,30 @@ class Album
                 $music->setAlbum(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Artist[]
+     */
+    public function getArtists(): Collection
+    {
+        return $this->artists;
+    }
+
+    public function addArtist(Artist $artist): self
+    {
+        if (!$this->artists->contains($artist)) {
+            $this->artists[] = $artist;
+        }
+
+        return $this;
+    }
+
+    public function removeArtist(Artist $artist): self
+    {
+        $this->artists->removeElement($artist);
 
         return $this;
     }
