@@ -15,6 +15,8 @@ class UserType extends AbstractType
             ->add('name')
             ->add('birthDate')
             ->add('plan')
+            ->add('creditCard')
+            ->add('address')
         ;
     }
 
