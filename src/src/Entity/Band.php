@@ -39,6 +39,10 @@ class Band
         $this->artists = new ArrayCollection();
         $this->albums = new ArrayCollection();
     }
+    
+    public function __toString() {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
