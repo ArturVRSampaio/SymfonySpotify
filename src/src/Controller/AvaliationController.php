@@ -21,50 +21,11 @@ class AvaliationController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'avaliation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
-    {
-        $avaliation = new Avaliation();
-        $form = $this->createForm(AvaliationType::class, $avaliation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($avaliation);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('avaliation_index');
-        }
-
-        return $this->render('avaliation/new.html.twig', [
-            'avaliation' => $avaliation,
-            'form' => $form->createView(),
-        ]);
-    }
-
     #[Route('/{id}', name: 'avaliation_show', methods: ['GET'])]
     public function show(Avaliation $avaliation): Response
     {
         return $this->render('avaliation/show.html.twig', [
             'avaliation' => $avaliation,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'avaliation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Avaliation $avaliation): Response
-    {
-        $form = $this->createForm(AvaliationType::class, $avaliation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('avaliation_index');
-        }
-
-        return $this->render('avaliation/edit.html.twig', [
-            'avaliation' => $avaliation,
-            'form' => $form->createView(),
         ]);
     }
 
