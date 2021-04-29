@@ -14,6 +14,7 @@ class BandType extends AbstractType
         $builder
             ->add('name')
             ->add('artists')
+            ->add('albums')
         ;
     }
 

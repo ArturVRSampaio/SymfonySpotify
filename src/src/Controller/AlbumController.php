@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Album;
-use App\Form\AlbumType;
+use App\Form\AlbumwType;
 use App\Repository\AlbumRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

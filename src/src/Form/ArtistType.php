@@ -15,6 +15,7 @@ class ArtistType extends AbstractType
             ->add('name')
             ->add('BirthDate')
             ->add('albums')
+            ->add('bands')
         ;
     }
 

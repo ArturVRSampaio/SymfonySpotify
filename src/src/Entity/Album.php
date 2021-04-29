@@ -34,10 +34,16 @@ class Album
      */
     private $artists;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Band::class, mappedBy="albums")
+     */
+    private $bands;
+
     public function __construct()
     {
         $this->musics = new ArrayCollection();
         $this->artists = new ArrayCollection();
+        $this->bands = new ArrayCollection();
     }
 
     public function __toString() {
@@ -111,6 +117,33 @@ class Album
     public function removeArtist(Artist $artist): self
     {
         $this->artists->removeElement($artist);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Band[]
+     */
+    public function getBands(): Collection
+    {
+        return $this->bands;
+    }
+
+    public function addBand(Band $band): self
+    {
+        if (!$this->bands->contains($band)) {
+            $this->bands[] = $band;
+            $band->addAlbum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBand(Band $band): self
+    {
+        if ($this->bands->removeElement($band)) {
+            $band->removeAlbum($this);
+        }
 
         return $this;
     }
