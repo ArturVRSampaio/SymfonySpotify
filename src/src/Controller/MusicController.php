@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Music;
+use App\Service\MusicAvaliationService;
 use App\Form\MusicType;
 use App\Repository\MusicRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -79,4 +80,14 @@ class MusicController extends AbstractController
 
         return $this->redirectToRoute('music_index');
     }
+
+    #[Route('/{id}', name: 'music_avaliate', methods: ['POST'])]
+    public function avaliate( Request $request, Music $music, MusicAvaliationService $avaliation): Response
+    {
+        $user = $this->getUser();
+        $avaliation->avalia($user, $music);
+        
+        return $this->redirectToRoute('avaliation_index');
+    }
+
 }

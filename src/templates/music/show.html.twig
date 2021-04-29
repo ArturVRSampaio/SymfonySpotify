@@ -18,6 +18,12 @@
         </tbody>
     </table>
 
+    <form method="post" action="{{ path('music_avaliate', {'id': music.id}) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('avaliate' ~ music.id) }}">
+        <button type="submit" class="fa fa-heart"></button>
+    </form>
+
+
     <a href="{{ path('music_index') }}">back to list</a>
 
     <a href="{{ path('music_edit', {'id': music.id}) }}">edit</a>

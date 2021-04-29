@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Avaliation;
-use App\Form\AvaliationType;
+use App\Entity\Music;
+use App\Service\MusicAvaliationService;
 use App\Repository\AvaliationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
