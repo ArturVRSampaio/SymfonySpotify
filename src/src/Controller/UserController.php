@@ -30,6 +30,8 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setRoles(["ROLE_ADMIN"]);
+            $encryptedPassword = password_hash($user->getPassword(), PASSWORD_BCRYPT);
+            $user->setPassword($encryptedPassword);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
