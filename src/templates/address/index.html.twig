@@ -13,6 +13,7 @@
                 <th>City</th>
                 <th>Country</th>
                 <th>actions</th>
+                <th>User</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +23,9 @@
                 <td>{{ address.number }}</td>
                 <td>{{ address.city }}</td>
                 <td>{{ address.country }}</td>
+                <td>{{ address.user }}</td>
                 <td>
                     <a href="{{ path('address_show', {'id': address.id}) }}">show</a>
-                    <a href="{{ path('address_edit', {'id': address.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

@@ -29,24 +29,6 @@ class AddressController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'address_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Address $address): Response
-    {
-        $form = $this->createForm(AddressType::class, $address);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('address_index');
-        }
-
-        return $this->render('address/edit.html.twig', [
-            'address' => $address,
-            'form' => $form->createView(),
-        ]);
-    }
-
     #[Route('/{id}', name: 'address_delete', methods: ['POST'])]
     public function delete(Request $request, Address $address): Response
     {
