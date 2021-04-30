@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Music;
 use App\Service\MusicAvaliationService;
 use App\Form\MusicType;
+use App\Repository\AvaliationRepository;
 use App\Repository\MusicRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -81,13 +82,13 @@ class MusicController extends AbstractController
         return $this->redirectToRoute('music_index');
     }
 
-    #[Route('/{id}', name: 'music_avaliate', methods: ['POST'])]
-    public function avaliate( Request $request, Music $music, MusicAvaliationService $avaliation): Response
+    #[Route('/music_avaliate/{id}', name: 'music_avaliate', methods: ['POST'])]
+    public function avaliate(Request $request, Music $music, MusicAvaliationService $avaliation): Response
     {
-        $user = $this->getUser();
-        $avaliation->avalia($user, $music);
-        
+        if ($this->isCsrfTokenValid('avaliate'.$music->getId(), $request->request->get('_token'))) {
+            $user = $this->getUser();
+            $avaliation->avalia($user, $music);
+        }
         return $this->redirectToRoute('avaliation_index');
     }
-
 }

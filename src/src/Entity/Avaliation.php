@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AvaliationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AvaliationRepository::class)
@@ -18,12 +19,14 @@ class Avaliation
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avaliations")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avaliations"), nullable=false
+     * @Assert\NotBlank
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Music::class, inversedBy="avaliations")
+     * @ORM\ManyToOne(targetEntity=Music::class, inversedBy="avaliations"), nullable=false
+     * @Assert\NotBlank
      */
     private $music;
 

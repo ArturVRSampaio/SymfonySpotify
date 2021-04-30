@@ -19,6 +19,13 @@ class AvaliationRepository extends ServiceEntityRepository
         parent::__construct($registry, Avaliation::class);
     }
 
+    public function save(Avaliation $avaliation){
+        $em = $this->getEntityManager();
+        $em->beginTransaction();
+        $em->persist($avaliation);
+        $em->commit();
+        $em->flush();
+    }
     // /**
     //  * @return Avaliation[] Returns an array of Avaliation objects
     //  */

@@ -9,6 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>user</th>
+                <th>music</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -16,9 +18,10 @@
         {% for avaliation in avaliations %}
             <tr>
                 <td>{{ avaliation.id }}</td>
+                <td>{{ avaliation.user }}</td>
+                <td>{{ avaliation.music }}</td>
                 <td>
                     <a href="{{ path('avaliation_show', {'id': avaliation.id}) }}">show</a>
-                    <a href="{{ path('avaliation_edit', {'id': avaliation.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
