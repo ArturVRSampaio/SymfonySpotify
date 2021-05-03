@@ -22,8 +22,10 @@ class MusicAvaliationService
 
 
     public function avalia(User $user,Music $music) {
-        $avaliation =new Avaliation($user, $music);
-        $music->addAvaliation($avaliation);
+        $avaliation =new Avaliation();
+        $avaliation->setMusic($music);
+        $avaliation->setUser($user);
         $this->avaliationRepository->save($avaliation);
+        $music->addAvaliation($avaliation);
     }
 }

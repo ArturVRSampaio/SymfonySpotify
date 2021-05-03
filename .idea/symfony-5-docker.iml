@@ -68,6 +68,21 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/doctrine/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/http-client-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/security-guard" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/security-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/validator" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/property-access" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/property-info" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/intl" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/security-csrf" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/security-core" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/security-http" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/form" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

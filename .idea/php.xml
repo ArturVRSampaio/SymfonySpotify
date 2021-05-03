@@ -64,6 +64,21 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/src/vendor/doctrine/sql-formatter" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/form" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
